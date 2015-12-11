@@ -43,6 +43,10 @@ public class USStates {
         if (counts.get('A') != 4) throw new AssertionError();
         if (!counts.containsKey('B')) throw new AssertionError();
         if (counts.get('B') != 0) throw new AssertionError();
+
+        for (Character firstLetter : counts.keySet()) {
+            System.out.println(firstLetter + " : " + counts.get(firstLetter));
+        }
     }
 
     public static final String[] STATE_NAMES = {
