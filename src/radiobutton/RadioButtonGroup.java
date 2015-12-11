@@ -10,6 +10,9 @@ package radiobutton;
  */
 public class RadioButtonGroup {
 
+    private boolean[] buttons;
+    private int currentButton;
+
     /**
      * Creates a group of radio buttons.
      *
@@ -21,6 +24,12 @@ public class RadioButtonGroup {
      *   The initial button number is invalid.
      */
     public RadioButtonGroup(int numButtons, int initial) {
+        if (initial < 0 || initial > numButtons - 1)
+            throw new RuntimeException();
+
+        buttons = new boolean[numButtons];
+        buttons[initial] = true;
+        currentButton = initial;
         // TODO: Implement this method.
     }
 
@@ -29,6 +38,7 @@ public class RadioButtonGroup {
      */
     public RadioButtonGroup(int numButtons) {
         this(numButtons, 0);
+        currentButton = 0;
     }
 
     /**
@@ -40,6 +50,12 @@ public class RadioButtonGroup {
      */
     public void select(int button) {
         // TODO: Implement this method.
+        if (button < 0 || button > buttons.length - 1)
+            throw new RuntimeException();
+
+        buttons[button] = true;
+        buttons[currentButton] = false;
+        currentButton = button;
     }
 
     /**
@@ -51,9 +67,24 @@ public class RadioButtonGroup {
      */
     public boolean isSelected(int button) {
         // TODO: Implement this method.
-        return false;
+        if (button < 0 || button > buttons.length - 1)
+            throw new RuntimeException();
+
+        return buttons[button];
     }
 
     // TODO: Add attributes and helper methods as needed.
+
+    public static void main(String[] args) {
+
+        RadioButtonGroup buttons = new RadioButtonGroup(10);
+        System.out.println(buttons.isSelected(0));
+        System.out.println(buttons.isSelected(1));;
+
+        buttons.select(5);
+        System.out.println(buttons.isSelected(0));
+        System.out.println(buttons.isSelected(1));
+        System.out.println(buttons.isSelected(5));
+    }
 
 }
