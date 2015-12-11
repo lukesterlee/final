@@ -85,6 +85,10 @@ public class RadioButtonGroup {
         System.out.println(buttons.isSelected(0));
         System.out.println(buttons.isSelected(1));
         System.out.println(buttons.isSelected(5));
+
+        buttons.select(10);
+        //buttons.select(15);
+        //buttons.select(-3);
     }
 
 }
